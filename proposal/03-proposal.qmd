@@ -16,8 +16,10 @@ occ <- rl_occurrences(resolved)
 # 4. Check data quality before computing metrics
 rl_check_occurrences(occ)
 # 5. Calculate some metrics (e.g AOO)
-aoo <- rl_aoo(occ)
+aoo <- rl_aoo(occ) # or rl_eoo()
 ```
+Unlike `redlistr`, `rl_aoo()`, and `rl_eoo()` will operate on the output of `rl_occurrences()` directly and report IUCN Criterion B threshold flags alongside the metric values.
+
 
 ## Detail
 
@@ -46,7 +48,7 @@ The three modules are implemented as standard R functions within the existing `r
 
 ### Assumptions
 
-The project assumes that the IUCN Red List V4 API and the GBIF API remain accessible and stable, and we are in good health during the execution period.
+The project assumes that the IUCN Red List V4 API and the GBIF API remain accessible and stable.
 
 ### External dependencies
 

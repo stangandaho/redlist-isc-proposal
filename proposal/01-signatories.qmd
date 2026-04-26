@@ -2,7 +2,7 @@
 
 ## Project team
 
-I'm the leader of the project, the author and maintainer of the `redlist` package. I'm ecological data scientist, with experience in package developement (e.g [nimo](https://nimo.naben.org/), and [ct](https://stangandaho.github.io/ct/index.html)).
+I'm the leader of the project, the author and maintainer of the `redlist` package. I'm ecological data scientist, with experience in package development (e.g [nimo](https://nimo.naben.org/), and [ct](https://stangandaho.github.io/ct/index.html)).
 
 ## Contributors
 
@@ -10,4 +10,4 @@ I'm the leader of the project, the author and maintainer of the `redlist` packag
 
 ## Consulted
 
-Nobody
+The proposal has been discussed informally with colleagues in the conservation biology community.

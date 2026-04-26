@@ -26,7 +26,7 @@ Conservation biologists, government agencies running national assessments, NGOs 
 
 -   `redlist` (this package) retrieves IUCN species data, taxonomy, and assessment history from the IUCN Red List V4 API.
 -   `redlistr` computes EOO and AOO from occurrence data, but requires a clean input dataset and has no data retrieval functionality.
--   `red`and `ConR` computes species assessment metrics and can retrieve GBIF data, but does not resolve IUCN taxonomy to the GBIF backbone or query under synonyms.
+-   `red`and `ConR` compute species assessment metrics and can retrieve GBIF data, but does not resolve IUCN taxonomy to the GBIF backbone or query under synonyms.
 
 ## Why this matters
 
