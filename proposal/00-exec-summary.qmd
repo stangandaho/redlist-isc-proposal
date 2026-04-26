@@ -1,6 +1,13 @@
 # Executive Summary
 
-<!--
-This section provides a condensed view of the entire proposal, one page long.
-It should be a comprehensive high-level overview that captures the essence of the proposal, including its goals, methods, expected outcomes, deliverables, and budget.
--->
+The `redlist` R package provides a clean and consistent interface to the IUCN Red List. It is currently the only R package built around uniform tibble outputs, covering species assessments, taxonomy, threats, habitats, and historical status data.
+
+This proposal aims to extend `redlist` with a taxonomic bridge and occurrence data pipeline. Indeed, computing IUCN Criterion B metrics (Extent of Occurrence and Area of Occupancy) requires occurrence data, and the main source of such data is GBIF. However, GBIF uses its own taxonomic backbone, which often differs from IUCN taxonomy in accepted names and synonyms. When practitioners query GBIF using an IUCN species name, they risk retrieving incomplete records, missing synonyms, or silently mixing records from different taxa (an example [here](https://stangandaho.github.io/redlist/articles/GBIF-and-IUCN-Red-List.html#analyzing-conservation-status)). No existing R package bridges these two taxonomic systems in the context of Red List assessments.
+
+The proposed extension adds three modules to `redlist`:
+
+1.  **Taxonomic name resolution**: resolves an IUCN species name to the GBIF backbone and retrieves all known synonyms, with a confidence score for the match.
+2.  **Multi-synonym occurrence retrieval**: fetches GBIF occurrence records under the accepted name and all synonyms, deduplicates by coordinate, date and institution, and returns a clean `sf` POINT object.
+3.  **Assessment-readiness checks**: flags data quality issues that would compromise metrics computation before the user passes data to the specialzed functions.
+
+The project runs over three months of part-time development with a requested budget of **USD 6,600**. All code will be released under the MIT licence, fully tested, and submitted to CRAN.

@@ -1,22 +1,22 @@
 # Success
-<!--
-Projects should have a definition of done that is measurable, and a
-thorough understanding going in of what the risks are to delivery
--->
 
 ## Definition of done
-<!--
-What does success look like?
--->
+
+The project is complete when:
+
+- `rl_gbif_resolve()`, `rl_occurrences()`, and `rl_check_occurrences()`
+  are available in a version of `redlist` accepted on CRAN,
+- two vignettes are published on the [documentation site](https://stangandaho.github.io/redlist/index.html)
 
 ## Measuring success
-<!--
-How will we know when success is achieved, what markers can we use
-along the way
--->
+
+During development, progress is tracked by milestone completion against
+the dates in the project plan.
+
+After release, the main indicator is CRAN download counts tracked via
+the `cranlogs` package.
 
 ## Future work
-<!--
-How could this be extended / developed in the future by yourself
-and/or the community in general?
--->
+
+- Continue to maintain the package.
+- Intergrate calculation of the population metrics related to the IUCN criteria A, C, and D

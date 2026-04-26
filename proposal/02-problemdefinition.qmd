@@ -4,21 +4,30 @@ bibliography: references.bib
 
 # The Problem
 
-```{=html}
-<!--
-Outlining the issue / weak point / problem to be solved by this
-proposal. This should be a compelling section that sets the reader up
-for the next section - the proposed solution!
+## Context
 
-It is important to cover:
+Species assessments under the IUCN Red List of Threatened Species are used worldwide to prioritize which species need protection [@IUCN2024RedListGuidelines]. A central part of many assessments is Criterion B, which evaluates a species' geographic range through two metrics: Extent of Occurrence (EOO) and Area of Occupancy (AOO). Computing these metrics requires a reliable set of occurrence records, typically sourced from the Global Biodiversity Information Facility (GBIF), the largest open-access biodiversity database [@rgbif; @rpyGBIF].
 
- - [ ] What the problem is
- - [ ] Who it affects
- - [ ] Why is it a problem
- - [ ] What will solving the problem enable (why should it be solved)
- - [ ] Brief summary of existing work and previous attempts (e.g., relevant R packages)
- - [ ] If proposing changes to R itself: letter of support from R Core member
--->
-```
+## The gap: taxonomy mismatch between IUCN and GBIF
 
-An example in-text citation [@wickham2016].
+GBIF maintains its own taxonomic backbone, which is built from several aggregated checklists. The IUCN Red List maintains a separate and authoritative taxonomy for assessed species. For many species, the accepted name differs between the two systems. A practitioner who queries GBIF using an IUCN-accepted name may:
+
+-   miss occurrence records indexed under GBIF-accepted synonyms,
+-   retrieve records that belong to a different taxon with a shared synonym, or
+-   obtain an incomplete picture of a species' range because only one name was queried.
+
+This mismatch is not a minor edge case. In plant taxonomy alone, synonym lists routinely contain five to fifteen names per species. In insects and fungi the situation is often worse. There is currently no R package that resolves an IUCN species name to the GBIF backbone and retrieves occurrence records under all known synonyms in a single, reproducible workflow.
+
+## Who is affected
+
+Conservation biologists, government agencies running national assessments, NGOs producing regional Red Lists, and researchers studying patterns of extinction risk.
+
+## What exists and what is still missing
+
+-   `redlist` (this package) retrieves IUCN species data, taxonomy, and assessment history from the IUCN Red List V4 API.
+-   `redlistr` computes EOO and AOO from occurrence data, but requires a clean input dataset and has no data retrieval functionality.
+-   `red`and `ConR` computes species assessment metrics and can retrieve GBIF data, but does not resolve IUCN taxonomy to the GBIF backbone or query under synonyms.
+
+## Why this matters
+
+A Red List assessment based on incomplete occurrence data may underestimate a species' range, potentially leading to a more threatened category than is warranted, or fail to detect range changes. Conversely, taxonomic confusion can inflate a range estimate. Making this step reliable, transparent, and reproducible directly improves the quality of conservation decisions.

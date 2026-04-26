@@ -1,50 +1,56 @@
 # The proposal
-<!--
-How are you going to solve the problem? Include the concrete actions you
-will take and an estimated timeline. What are likely failure modes and
-how will you recover from them?
-
-This is where the proposal should be outlined.
--->
 
 ## Overview
-<!--
-At a high-level address what your proposal is and how it will address
-the problem identified. Highlight any benefits to the R Community that
-follow from solving the problem. This should be your most compelling
-section.
 
-Include concrete actions you will take and estimated timeline.
--->
+We propose extending the `redlist` package with a data pipeline that takes an IUCN species identifier, resolves its taxonomy against the GBIF backbone, retrieves occurrence records under all known synonyms, removes duplicates and low-quality records, and returns an `sf` POINT object ready for assessment metrics calculations.
+
+``` r
+library(redlist)
+
+# 1. Get IUCN taxonomy for a species
+sp <- rl_scientific_name(genus_name = "Afzelia", species_name =  "africana")
+# 2. Resolve IUCN name to GBIF backbone and retrieve synonyms
+resolved <- rl_gbif_resolve(sp)
+# 3. Fetch occurrence records under all synonyms
+occ <- rl_occurrences(resolved)
+# 4. Check data quality before computing metrics
+rl_check_occurrences(occ)
+# 5. Calculate some metrics (e.g AOO)
+aoo <- rl_aoo(occ)
+```
 
 ## Detail
-<!--
-Go into more detail about the specifics of the project and how it delivers
-against the problem.
-
-Depending on project type the detail section should include:
--->
 
 ### Minimum Viable Product
 
-<!--
-What is the smallest thing you can build that delivers value to your users?
--->
+The minimum viable product is a working functions that take an IUCN species name or SIS ID and returns the GBIF accepted name, the GBIF taxon key, and a list of GBIF-recognised synonyms, with a confidence score for the name match, get and check coordinates, and compute at least AOO and EOO metrics. This is achievable within the first three months.
 
 ### Architecture
 
-<!--
-What does the high-level architecture look like?
--->
+The three modules are implemented as standard R functions within the existing `redlist` package structure. They depend on `rgbif` for GBIF API access and on `sf` for spatial output.
+
+**Module 1:** Uses `redlist` to match the GBIF accepted name.
+
+**Module 2:** Retrieves occurrence records for each synonym and the accepted name. Results are combined and deduplicated.
+
+**Module 3:** Runs a set of pre-assessment checks on the occurrence and returns a structured report. Checks include:
+
+-   fewer than 3 unique localities (EOO is undefined with fewer than 3 points),
+-   all records from a single institution (potential collection bias),
+-   no records in the last 20 years (assessment may be based on stale data),
+-   coordinate precision coarser than 0.01 degrees (too imprecise for 2x2 km AOO grid),
+-   records falling in the ocean for terrestrial species (coordinate error).
+-   etc.
+
+**Module 4:** Calculates the key assessment metrics of IUCN Criteria B.
 
 ### Assumptions
 
-<!--
-What assumptions are you making that, if proven false, would invalidate the project?
--->
+The project assumes that the IUCN Red List V4 API and the GBIF API remain accessible and stable, and we are in good health during the execution period.
 
 ### External dependencies
 
-<!--
-What external dependencies does the project have (e.g. libraries, services, other projects, etc.)?
--->
+-   `rgbif`: GBIF API access
+-   `sf`: spatial output and geometry
+-   `dplyr` and `tidyr`: data manipulation (already used in `redlist`)
+-   `cli`: user-facing messages and warnings (already used in `redlist`)
