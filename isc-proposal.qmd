@@ -1,10 +1,10 @@
 ---
-title: "IUCN Red List Assessment in R"
+title: "Bridging IUCN and GBIF Taxonomies for Reproducible Red List Assessments in R"
 author:
   - name: Stanislas Mahussi Gandaho
     orcid: 0009-0003-4969-1252
     affiliations:
-      - "African Parks"
+      - "African Parks, Benin"
       - Laboratory of Applied Ecology, University of Abomey-Calavi, Benin
 
 date: today

@@ -6,7 +6,7 @@ The project is complete when:
 
 - `rl_gbif_resolve()`, `rl_occurrences()`, and `rl_check_occurrences()`
   are available in a version of `redlist` accepted on CRAN,
-- all news functions have test coverage above 80% as measured by `covr`,
+- all new functions have test coverage above 80% as measured by `covr`,
 - the package passes `R CMD check --as-cran` on Linux, macOS, and  Windows,
 - two vignettes are published on the [documentation site](https://stangandaho.github.io/redlist/index.html)
 

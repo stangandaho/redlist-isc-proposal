@@ -25,13 +25,13 @@ Unlike `redlistr`, `rl_aoo()`, and `rl_eoo()` will operate on the output of `rl_
 
 ### Minimum Viable Product
 
-The minimum viable product is a working functions that take an IUCN species name or SIS ID and returns the GBIF accepted name, the GBIF taxon key, and a list of GBIF-recognised synonyms, with a confidence score for the name match, get and check coordinates, and compute at least AOO and EOO metrics. This is achievable within the first three months.
+The minimum viable product is working functions that take an IUCN species name or SIS ID and returns the GBIF accepted name, the GBIF taxon key, and a list of GBIF-recognised synonyms, with a confidence score for the name match, get and check coordinates, and compute at least AOO and EOO metrics. This is achievable within the first three months.
 
 ### Architecture
 
 The three modules are implemented as standard R functions within the existing `redlist` package structure. They depend on `rgbif` for GBIF API access and on `sf` for spatial output.
 
-**Module 1:** Uses `redlist` to match the GBIF accepted name.
+**Module 1:** Uses `redlist` to retrieve the IUCN accepted name and synonyms, then resolves each to the GBIF backbone.
 
 **Module 2:** Retrieves occurrence records for each synonym and the accepted name. Results are combined and deduplicated.
 
@@ -42,7 +42,6 @@ The three modules are implemented as standard R functions within the existing `r
 -   no records in the last 20 years (assessment may be based on stale data),
 -   coordinate precision coarser than 0.01 degrees (too imprecise for 2x2 km AOO grid),
 -   records falling in the ocean for terrestrial species (coordinate error).
--   etc.
 
 **Module 4:** Calculates the key assessment metrics of IUCN Criteria B.
 

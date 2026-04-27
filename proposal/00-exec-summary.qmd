@@ -8,6 +8,6 @@ The proposed extension adds three modules to `redlist`:
 
 1.  **Taxonomic name resolution**: resolves an IUCN species name to the GBIF backbone and retrieves all known synonyms, with a confidence score for the match.
 2.  **Multi-synonym occurrence retrieval**: fetches GBIF occurrence records under the accepted name and all synonyms, deduplicates by coordinate, date and institution, and returns a clean `sf` POINT object.
-3.  **Assessment-readiness checks**: flags data quality issues that would compromise metrics computation before the user passes data to the specialzed functions.
+3.  **Assessment-readiness checks**: flags data quality issues that would compromise metrics computation before the user passes data to the specialized functions.
 
 The project runs over three months of part-time development with a requested budget of **USD 6,600**. All code will be released under the MIT licence, fully tested, and submitted to CRAN.

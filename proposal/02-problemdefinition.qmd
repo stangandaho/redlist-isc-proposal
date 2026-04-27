@@ -6,7 +6,7 @@ bibliography: references.bib
 
 ## Context
 
-Species assessments under the IUCN Red List of Threatened Species are used worldwide to prioritize which species need protection [@IUCN2024RedListGuidelines]. A central part of many assessments is Criterion B, which evaluates a species' geographic range through two metrics: Extent of Occurrence (EOO) and Area of Occupancy (AOO). Computing these metrics requires a reliable set of occurrence records, typically sourced from the Global Biodiversity Information Facility (GBIF), the largest open-access biodiversity database [@rgbif; @rpyGBIF].
+Species assessments under the IUCN Red List of Threatened Species are used worldwide to prioritize which species need protection [@IUCN2024RedListGuidelines]. A central part of many assessments is Criterion B, which evaluates a species' geographic range through two metrics: Extent of Occurrence (EOO) and Area of Occupancy (AOO). Computing these metrics requires a reliable set of occurrence records, typically sourced from the Global Biodiversity Information Facility (GBIF), the largest open-access biodiversity database [@rgbif].
 
 ## The gap: taxonomy mismatch between IUCN and GBIF
 
@@ -26,7 +26,7 @@ Conservation biologists, government agencies running national assessments, NGOs 
 
 -   `redlist` (this package) retrieves IUCN species data, taxonomy, and assessment history from the IUCN Red List V4 API.
 -   `redlistr` computes EOO and AOO from occurrence data, but requires a clean input dataset and has no data retrieval functionality.
--   `red`and `ConR` compute species assessment metrics and can retrieve GBIF data, but does not resolve IUCN taxonomy to the GBIF backbone or query under synonyms.
+-   `red` and `ConR` compute species assessment metrics and can retrieve GBIF data, but do not resolve IUCN taxonomy to the GBIF backbone or query under synonyms.
 
 ## Why this matters
 

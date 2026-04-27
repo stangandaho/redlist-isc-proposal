@@ -2,7 +2,7 @@
 
 ## Start-up phase
 
-The project begins immediately after contract execution. In the first two weeks, I will set up a dedicated development branch on the existing `redlist` GitHub repository, and define the public API for the three modules. The MIT licence already applies to the package. Progress will be reported posts on the R Consortium blog.
+The project begins immediately after contract execution. In the first two weeks, I will set up a dedicated development branch on the existing `redlist` GitHub repository, and define the public API for the three modules. The MIT licence already applies to the package. Progress will be reported via posts on the R Consortium blog.
 
 ## Technical delivery
 
@@ -26,9 +26,11 @@ All code is developed openly on GitHub under the MIT licence.
 
 ## Budget and funding plan
 
-| Milestone | Work | Amount |
-|------------------------|------------------------|------------------------|
-| Taxonomic resolution | `rl_gbif_resolve()`, tests, docs | USD 2,100 |
-| Occurrence retrieval | `rl_occurrences()`, deduplication, vignette | USD 1,750 |
-| Assessment | `rl_check_occurrences()`, `rl_aoo()`, `rl_eoo()`, integration, docs | USD 2,750 |
-| **Total** |  | **USD 6,600** |
+The project is a labour-only budget at USD 50 per hour, covering 132 hours of part-time development over four months.
+
+| Milestone | Work | Hours | Amount |
+|------------------|------------------|------------------|------------------|
+| Taxonomic resolution | `rl_gbif_resolve()`, tests, docs | 42 | USD 2,100 |
+| Occurrence retrieval | `rl_occurrences()`, deduplication, vignette | 35 | USD 1,750 |
+| Assessment | `rl_check_occurrences()`, `rl_aoo()`, `rl_eoo()`, integration, docs | 55 | USD 2,750 |
+| **Total** |  |  132 | **USD 6,600** |
