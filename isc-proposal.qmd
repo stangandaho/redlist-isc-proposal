@@ -4,7 +4,7 @@ author:
   - name: Stanislas Mahussi Gandaho
     orcid: 0009-0003-4969-1252
     affiliations:
-      - "African Parks, Benin"
+      - African Parks, Benin
       - Laboratory of Applied Ecology, University of Abomey-Calavi, Benin
 
 date: today
@@ -18,7 +18,6 @@ format:
       - right=1.25in
 bibliography: references.bib
 ---
-
 
 {{< include proposal/00-exec-summary.qmd >}}
 
