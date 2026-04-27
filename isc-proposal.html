@@ -2277,7 +2277,7 @@ vertical-align: -.125em;
 <ol type="1">
 <li><strong>Taxonomic name resolution</strong>: resolves an IUCN species name to the GBIF backbone and retrieves all known synonyms, with a confidence score for the match.</li>
 <li><strong>Multi-synonym occurrence retrieval</strong>: fetches GBIF occurrence records under the accepted name and all synonyms, deduplicates by coordinate, date and institution, and returns a clean <code>sf</code> POINT object.</li>
-<li><strong>Assessment-readiness checks</strong>: flags data quality issues that would compromise metrics computation before the user passes data to the specialzed functions.</li>
+<li><strong>Assessment-readiness checks</strong>: flags data quality issues that would compromise metrics computation before the user passes data to the specialized functions.</li>
 </ol>
 <p>The project runs over three months of part-time development with a requested budget of <strong>USD 6,600</strong>. All code will be released under the MIT licence, fully tested, and submitted to CRAN.</p>
 </section>
@@ -2300,7 +2300,7 @@ vertical-align: -.125em;
 <h1>The Problem</h1>
 <section id="context" class="level2">
 <h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>Species assessments under the IUCN Red List of Threatened Species are used worldwide to prioritize which species need protection <span class="citation" data-cites="IUCN2024RedListGuidelines">(<a href="#ref-IUCN2024RedListGuidelines" role="doc-biblioref">IUCN Standards and Petitions Committee 2024</a>)</span>. A central part of many assessments is Criterion B, which evaluates a species’ geographic range through two metrics: Extent of Occurrence (EOO) and Area of Occupancy (AOO). Computing these metrics requires a reliable set of occurrence records, typically sourced from the Global Biodiversity Information Facility (GBIF), the largest open-access biodiversity database <span class="citation" data-cites="rgbif rpyGBIF">(<a href="#ref-rgbif" role="doc-biblioref">Chamberlain et al. 2026</a>; <a href="#ref-rpyGBIF" role="doc-biblioref">Chamberlain and Boettiger 2017</a>)</span>.</p>
+<p>Species assessments under the IUCN Red List of Threatened Species are used worldwide to prioritize which species need protection <span class="citation" data-cites="IUCN2024RedListGuidelines">(<a href="#ref-IUCN2024RedListGuidelines" role="doc-biblioref">IUCN Standards and Petitions Committee 2024</a>)</span>. A central part of many assessments is Criterion B, which evaluates a species’ geographic range through two metrics: Extent of Occurrence (EOO) and Area of Occupancy (AOO). Computing these metrics requires a reliable set of occurrence records, typically sourced from the Global Biodiversity Information Facility (GBIF), the largest open-access biodiversity database <span class="citation" data-cites="rgbif">(<a href="#ref-rgbif" role="doc-biblioref">Chamberlain et al. 2026</a>)</span>.</p>
 </section>
 <section id="the-gap-taxonomy-mismatch-between-iucn-and-gbif" class="level2">
 <h2 class="anchored" data-anchor-id="the-gap-taxonomy-mismatch-between-iucn-and-gbif">The gap: taxonomy mismatch between IUCN and GBIF</h2>
@@ -2357,7 +2357,7 @@ vertical-align: -.125em;
 <section id="architecture" class="level3">
 <h3 class="anchored" data-anchor-id="architecture">Architecture</h3>
 <p>The three modules are implemented as standard R functions within the existing <code>redlist</code> package structure. They depend on <code>rgbif</code> for GBIF API access and on <code>sf</code> for spatial output.</p>
-<p><strong>Module 1:</strong> Uses <code>redlist</code> to retrieve the IUCN accepted name and synonyms, then resolves each to the GBIF.</p>
+<p><strong>Module 1:</strong> Uses <code>redlist</code> to retrieve the IUCN accepted name and synonyms, then resolves each to the GBIF backbone.</p>
 <p><strong>Module 2:</strong> Retrieves occurrence records for each synonym and the accepted name. Results are combined and deduplicated.</p>
 <p><strong>Module 3:</strong> Runs a set of pre-assessment checks on the occurrence and returns a structured report. Checks include:</p>
 <ul>
@@ -2484,9 +2484,6 @@ vertical-align: -.125em;
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-rgbif" class="csl-entry" role="listitem">
 Chamberlain, Scott, Vijay Barve, Dan Mcglinn, Damiano Oldoni, Peter Desmet, Laurens Geffert, and Karthik Ram. 2026. <em>Rgbif: Interface to the Global Biodiversity Information Facility API</em>. <a href="https://CRAN.R-project.org/package=rgbif">https://CRAN.R-project.org/package=rgbif</a>.
-</div>
-<div id="ref-rpyGBIF" class="csl-entry" role="listitem">
-Chamberlain, Scott, and Carl Boettiger. 2017. <span>“R Python, and Ruby Clients for GBIF Species Occurrence Data.”</span> <em>PeerJ PrePrints</em>. <a href="https://doi.org/10.7287/peerj.preprints.3304v1">https://doi.org/10.7287/peerj.preprints.3304v1</a>.
 </div>
 <div id="ref-IUCN2024RedListGuidelines" class="csl-entry" role="listitem">
 IUCN Standards and Petitions Committee. 2024. <span>“Guidelines for Using the IUCN Red List Categories and Criteria.”</span> International Union for Conservation of Nature (IUCN). <a href="https://www.iucnredlist.org/documents/RedListGuidelines.pdf">https://www.iucnredlist.org/documents/RedListGuidelines.pdf</a>.
